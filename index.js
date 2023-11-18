@@ -43,7 +43,7 @@ app.post("/api/ies/v1/enquiry/email", (req, res) => {
         to: "nikhilbk9148@gmail.com",
         subject: `You have received an Enquiry from ${email_details_json["name"]}`,
         html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 0;">
             <h2 style="color: #333;">Enquiry Details</h2>
             <ul style="list-style: none; padding-left: 0;">
                 <li>
@@ -58,6 +58,9 @@ app.post("/api/ies/v1/enquiry/email", (req, res) => {
                 <li>
                     <strong>Company Name:</strong> ${email_details_json["company_name"]}
                 </li>
+                <li>
+                <strong>Enquiry About:</strong> ${email_details_json["enquiry_about"]}
+            </li>
                 <li>
                     <strong>Message:</strong> ${email_details_json["message"]}
                 </li>
