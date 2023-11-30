@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json());
 app.use(cors({
   
-    origin: ["https://iesteam.in","http://localhost:3000"]
+    origin: ["https://iesteam.in","https://www.iesteam.in","http://localhost:3000"]
 
 
 
