@@ -9,8 +9,7 @@ const connectToDatabase = require('./db');
 const app = express()
 app.use(express.json());
 app.use(cors({
-    credentials: true,
-    // origin:["""]
+  
     origin: ["https://iesteam.in","http://localhost:3000"]
 
 
