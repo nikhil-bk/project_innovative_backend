@@ -1,7 +1,11 @@
 require('dotenv').config();
 const express = require("express");
 const nodemailer = require("nodemailer")
+
 const cors = require('cors');
+const path = require('path');
+const connectToDatabase = require('./db');
+
 const app = express()
 app.use(express.json());
 app.use(cors({
@@ -26,14 +30,12 @@ let transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 })
-
-
-
+connectToDatabase()
 
 
 app.get("/", (req, res) => {
 
-    res.send("Hello World!")
+    res.send("App is running")
 })
 app.post("/api/ies/v1/enquiry/email", (req, res) => {
     email_details_json = req.body
@@ -82,6 +84,9 @@ app.post("/api/ies/v1/enquiry/email", (req, res) => {
     })
 
 })
+
+app.use('/api/ies/v1/user', require('./routes/userRoute'));
+app.use('/api/ies/v1/project', require('./routes/projectRoute'));
 
 app.listen(PORT, () => {
     console.log(`listening port ${PORT}`)
