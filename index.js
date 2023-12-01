@@ -20,7 +20,9 @@ app.use(cors({
 let PORT = process.env.PORT || 5000
 
 let transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: 'smtpout.secureserver.net',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.MAIL_USERNAME,
         pass: process.env.MAIL_PASSWORD
@@ -40,8 +42,8 @@ app.post("/api/ies/v1/enquiry/email", (req, res) => {
     email_details_json = req.body
     // console.log(email_details_json["name"])
     let mailOptions = {
-        from: "nikhilbk9148@gmail.com",
-        to: "nikhilbk9148@gmail.com",
+        from: "electric@iesteam.in",
+        to: "electric@iesteam.in",
         subject: `You have received an Enquiry from ${email_details_json["name"]}`,
         html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 0;">
